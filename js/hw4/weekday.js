@@ -8,9 +8,9 @@ var wd = {
     Saturday:6,
 }
 
-function weekdayToIndex(weekday){
+function weekday(weekday){
     return wd[weekday]
 }
 
 let weekday = Deno.args[0]
-console.log(weekday,"=",weekdayToIndex(weekday))
+console.log(weekday,"=",weekday(weekday))
