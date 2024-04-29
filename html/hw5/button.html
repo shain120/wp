@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html>
+
 <body>
-    <script>
-        var button = document.createElement("button");
-        button.innerHTML = "Click me";
-        document.body.appendChild(button);
+<button onclick="job()">Button1</button>
+<script>
+    function job() {
+        width += 10
+        b.style = `position:${position};left:${left};top:${top1};height:${height};width:${width}`
+    }
 
-        button.style.width = '100px';
-        button.style.height = '100px';
-
-        button.onclick = function(){
-            button.style.width +=
-            button.style.height +=
-
-        }
+    let left = 100
+    let top1 = 100
+    let height = 50
+    let width = 100
+    let position = 'absolute'
+    
+    let b = document.querySelector('button')
+    b.style = `position:${position};left:${left};top:${top1};height:${height};width:${width}`
 </script>
+</body>
+</html>
+    
 </body>
 </html>
