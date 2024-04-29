@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <button onclick="rand_move()">Click me</button>
+        <script>
+            function rand_move(){
+                left = Math.random()*window.innerWidth
+                top1 = Math.random()*window.innerHeight
+
+                var randomColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+              
+                b.style = `position:${position}; width:${width}; height:${height}; left:${left}; right:${right}; top:${top1};`;
+                b.style.backgroundColor = randomColor
+                setTimeout(rand_move,1000)
+            }
+
+            let b = document.querySelector('button')
+            let position = "absolute"
+            let width = 100;
+            let height = 50;
+            let left = 20;
+            let right = 0;
+            let top1 = 20;
+            
+        </script>
+    </body>
+</html>

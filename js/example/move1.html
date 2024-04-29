@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>隨機改變顏色和自動移動的按鈕</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.5s;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<button id="colorButton" onclick="changeColor()">Click me！</button>
+
+<script>
+    function changeColor() {
+        var randomColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+        var randomX = Math.random() * (window.innerWidth - 200);
+        var randomY = Math.random() * (window.innerHeight - 50);
+
+        var button = document.getElementById('colorButton');
+        button.style.backgroundColor = randomColor;
+        button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    setInterval(function() {
+        var randomColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+        var randomX = Math.random() * (window.innerWidth - 200);
+        var randomY = Math.random() * (window.innerHeight - 50);
+
+        var button = document.getElementById('colorButton');
+        button.style.backgroundColor = randomColor;
+        button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }, 500); // 2000 milliseconds = 2 seconds
+</script>
+
+</body>
+</html>
