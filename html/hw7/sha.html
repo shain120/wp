@@ -5,15 +5,26 @@
     <h3>SHA-256</h3>
 
     <textarea cols="80" rows="10" placeholder="..." oninput="job(this.value)"></textarea>
-    <p id ="output" >Hash:</p>
+
+    <p></p>
+
+    <label class="item_subtitle">Hash:</label>
+    <label id="output"></label>
+    <p></p>
+    <button onclick="copyText()">copy</button>
+
 
     <script>
         async function job(input)
         {
             let hex = await hash(input)
-            document.getElementById("output").innerHTML = "Hash : " + hex;
+            document.getElementById("output").innerHTML = hex;
         }
 
+        function copyText(){
+            const URL = document.getElementById("output")
+            navigator.clipboard.writeText(output.innerText)
+        }
     </script>  
 </body>
 </html>
