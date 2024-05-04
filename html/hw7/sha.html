@@ -1,0 +1,19 @@
+<html>
+<body>
+    <script src="sha.js"></script>
+
+    <h3>SHA-256</h3>
+
+    <textarea cols="80" rows="10" placeholder="..." oninput="job(this.value)"></textarea>
+    <p id ="output" >Hash:</p>
+
+    <script>
+        async function job(input)
+        {
+            let hex = await hash(input)
+            document.getElementById("output").innerHTML = "Hash : " + hex;
+        }
+
+    </script>  
+</body>
+</html>
