@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>ai translator</title>
+</head>
+<body>
+    <header></header>
+    <nav>
+        <select id = "language">
+            <option value="中文">中文</option>
+            <option value="英文">英文</option>
+            <option value="日語">日語</option>
+        </select>
+        <select id = "trans">
+            <option value="中文">中文</option>
+            <option value="英文">英文</option>
+            <option value="日語">日語</option>
+        </select>
+    </nav>
+    <aside></aside>
+    <main>
+        <textarea id="before" placeholder="請輸入文字 ..."></textarea>
+        <button onclick="translate()">翻譯</button>
+        <div id="after" placeholder="輸出文章"></div>
+    </main>
+    <footer></footer>
+    
+</body>
+<script src="main.js"></script>
+</html>
