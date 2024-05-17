@@ -1,10 +1,7 @@
-header, nav, footer, main {
+header,footer, main,nav {
     width: 95%;
     display: block;
     margin:10px auto;
-}
-#language, #trans{
-    float: left;
 }
 
 span, button, select, input, textarea {
