@@ -26,6 +26,6 @@ async function chat() {
     let qNode = document.querySelector('#question')
     let responseNode = document.querySelector('#response')
     responseNode.innerText = '詢問 ChatGPT 中，請稍等幾秒鐘 ...'
-    let answer = await groqChat(qNode.value)
+    let answer = await groqChat(qNode.value + '請用中文回答')
     responseNode.innerText = answer
 }
