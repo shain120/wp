@@ -27,5 +27,5 @@ async function chat() {
     let responseNode = document.querySelector('#after')
     responseNode.innerText = '詢問 ChatGPT 中，請稍等幾秒鐘 ...'
     let answer = await groqChat(qNode.value+ '翻譯成' + lgu.value + '翻譯結果將以用戶需求的語言形式呈現，不適用羅馬拼音。 ## 翻譯格式範例 "您的翻譯是：<翻譯內容>"## 約束：- 只進行直接的語言翻譯，不包含譯自羅馬拼音的內容。- 按用戶需求提供的語言釋出內容。')
-    responseNode.innerText = answer
+    responseNode.innerText = answer 
 }
