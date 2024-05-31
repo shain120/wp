@@ -6,7 +6,9 @@
 | html | [snake.html](https://github.com/shain120/wp/blob/master/html/midterm/snake.html) |
 | CSS | [main.css](https://github.com/shain120/wp/blob/master/html/midterm/main.css) |
 | JS | [main.js](https://github.com/shain120/wp/blob/master/html/midterm/main.js) |
-
+## 操縱方法
+WASD/↑↓←→鍵操縱  
+Esc 暫停 再按一下開始
 ## detal
 1. 設定讓蘋果碰到身體也會得分
 2. 設定esc暫停 在按一次繼續
@@ -19,4 +21,4 @@
 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 * https://ithelp.ithome.com.tw/articles/10271522?sc=hot
 ## webpage
-[webpage](https://shain120.github.io/wp/html/midterm/snake.html)
+[Web](https://shain120.github.io/wp/html/midterm/snake.html)
