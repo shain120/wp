@@ -26,6 +26,7 @@ function start(){
 const c = document.getElementById('game');
 const ctx = c.getContext('2d');
 
+
 class my_snake{
     constructor(x,y){
         this.x = x;
@@ -35,16 +36,16 @@ class my_snake{
 
 let speed = 8;
 
-let pixel_count = 20;   //格數
-let pixel_size = 23;    //每格大小
+let pixel_count = 40;   //每格移動大小
+let pixel_size = 40;    //每格大小
 
-let s_x = 10;
-let s_y = 10;
+let s_x = 5;
+let s_y = 5;
 const snakePart =[];
 let s_len = 0;
 
-let apple_x = 5;
-let apple_y = 5;
+let apple_x = 2;
+let apple_y = 2;
 
 let cont_x = 0;
 let cont_y = 0;
@@ -60,22 +61,25 @@ function snake_position(){
 
 function is_over(){
     let over = false;
-    if(s_x < 0 || s_x == 25 ||s_y < 0 ||s_y == 25){
+    if(s_x < 0 || s_x == 10 ||s_y < 0 ||s_y == 10){
         over = true;
     }//超出邊界
 
     for(let i=0;i<snakePart.length;i++){
-        if(s_x == snakePart[i].x && s_y == snakePart[i].y){
-            over = true;
+        if(s_x != snakePart[0].x && s_y != snakePart[0].y){
+            if(s_x == snakePart[i].x && s_y == snakePart[i].y){
+                over = true;
+            }
         }
+
     }//碰到身體
 
     if(over){
         ctx.fillStyle = "white";
         ctx.font = "50px Poppins";
-        ctx.fillText("Game Over!", c.width/6.5 + 50, c.height /2);
+        ctx.fillText("Game Over!", c.width/6.5, c.height /2);
         ctx.font = "40px Poppins";
-        ctx.fillText("再玩一次?", c.width/3.5 + 20, c.height /2 + 50 );
+        ctx.fillText("再玩一次?", c.width/3.5, c.height /2 + 50 );
         ctx.font = "25px Poppins";
         ctx.fillText("按空白鍵", c.width/2.7, c.height /2 +100 );
         bool_keycode = false;
@@ -92,20 +96,30 @@ function play_again(event) {
 
 function clear_screen() {
     ctx.fillStyle= 'black';
-    ctx.fillRect(0, 0, 500, 500);
+    ctx.fillRect(0, 0, 400, 400);
+
+    ctx.strokeStyle = "gray";
+    ctx.strokeRect(0,0,40,40);
+   
+    for(let x = 0; x < 400; x+=40) {
+        for(let y = 0; y < 400; y+=40) {
+            ctx.strokeRect(x-0.5, y-0.5, 40, 40);  // 繪製矩形
+        }
+    }
+
 }
 
 function eat(){
     if(apple_x == s_x && apple_y == s_y){
-        apple_x = Math.floor(Math.random()*pixel_count);
-        apple_y = Math.floor(Math.random()*pixel_count);
+        apple_x = Math.floor(Math.random()*10);
+        apple_y = Math.floor(Math.random()*10);
 
         s_len++;
         score++;
 
         if(score > 5 && score%2 == 0){
-            if(score != 0 && score >=15 &&score %15 == 0){
-                speed+=5;
+            if(score != 0 && score >=15 && score %15 == 0){
+                speed+=3;
             }else {
                 speed++;
             }  
@@ -117,8 +131,8 @@ function eat(){
         
 
         if(apple_x == body.x && apple_y == body.y){
-            apple_x = Math.floor(Math.random()*pixel_count);
-            apple_y = Math.floor(Math.random()*pixel_count);
+            apple_x = Math.floor(Math.random()*10);
+            apple_y = Math.floor(Math.random()*10);
 
             s_len++;
             score++;
@@ -162,7 +176,7 @@ function draw_score() {
 
 function set_speed() {
     if(score == 5){
-        speed = 10;
+        speed = 6;
     }    
 
 }
@@ -179,7 +193,6 @@ function keyDown(event) {
         cont_y = -1;
         cont_x = 0;
     }
-
     if(event.keyCode == 40 || event.keyCode == 83){
         bool_keycode = true;
         if(cont_y == -1 && s_len != 0){
@@ -188,7 +201,6 @@ function keyDown(event) {
         cont_y = 1;
         cont_x = 0;
     }
-
     if(event.keyCode == 37 || event.keyCode== 65){
         bool_keycode = true;
         if(cont_x == 1 && s_len != 0){ 
@@ -197,7 +209,6 @@ function keyDown(event) {
         cont_y = 0;
         cont_x = -1;
     }
-
     if(event.keyCode == 39 || event.keyCode== 68){
         bool_keycode = true;
         if(cont_x == -1 && s_len != 0){ 
@@ -206,7 +217,6 @@ function keyDown(event) {
         cont_y = 0;
         cont_x = 1;
     }
-
     if(event.keyCode == 27 && bool_keycode == true){
         if(sle == 0){
             clearTimeout(timeout);
@@ -223,5 +233,6 @@ function play_again(event) {
         location.reload();
     }
 }
+
 
 start();
