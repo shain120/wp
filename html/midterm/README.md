@@ -17,6 +17,6 @@
 7. 更改顏色 (蛇 蘋果)
 ## 參考資料
 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-* 
+* https://ithelp.ithome.com.tw/articles/10271522?sc=hot
 ## webpage
 [webpage](https://shain120.github.io/wp/html/midterm/snake.html)
