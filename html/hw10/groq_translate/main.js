@@ -1,4 +1,4 @@
-const main = document.querySelector('main')
+﻿const main = document.querySelector('main')
 
 let key = "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"
 
