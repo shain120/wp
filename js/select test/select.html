@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="a" onkeydown="a(event)">
+        <option>第一选项</option>
+        <option>第二选项</option>
+        <option>第三选项</option>
+        <option>第四选项</option>
+    </select>
+    <script>
+        window.onload = function(){
+            document.getElementById("a").focus();
+        }
+        function a(e){
+            var keyCode = window.event ? e.keyCode : e.which;
+            if(e.preventDefault){
+                if(keyCode==37||keyCode==38||keyCode==39||keyCode==40){
+                    e.preventDefault();
+                }
+            }else{
+                if(keyCode==37||keyCode==38||keyCode==39||keyCode==40){
+                    window.event.returnValue == false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

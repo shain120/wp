@@ -11,7 +11,7 @@
     Your browser does not support the HTML5 canvas tag.</canvas>
 
     <div>
-        <select name="level" id="level">
+        <select name="level" id="level" onkeydown="a(event)">
             <option value="1">easy</option>
             <option value="2">medium</option>
             <option value="3">hard</option>
@@ -30,7 +30,25 @@
 
     </div>
     <div id="speed"></div>
-      
+    
     <script src="main.js"></script>
+
+	<script>
+        window.onload = function(){
+            document.getElementById("a").focus();
+        }
+        function a(e){
+            var keyCode = window.event ? e.keyCode : e.which;
+            if(e.preventDefault){
+                if(keyCode==37||keyCode==38||keyCode==39||keyCode==40){
+                    e.preventDefault();
+                }
+            }else{
+                if(keyCode==37||keyCode==38||keyCode==39||keyCode==40){
+                    window.event.returnValue == false;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
