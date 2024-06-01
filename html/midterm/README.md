@@ -18,10 +18,12 @@ Esc 暫停 再按一下開始
 6. 遊戲開始時或重新開始按esc時不會 clear timeout
 7. 更改顏色 (蛇 蘋果)
 8. 增加難度 運用addEventListener 來做難度的變更
+9. 禁用上下左右鍵去控制select
 ## 參考資料
 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 * https://ithelp.ithome.com.tw/articles/10271522?sc=hot
 * https://blog.csdn.net/wtianheihei/article/details/80206057
 * https://stackoverflow.com/questions/61158252/change-html-content-to-selected-option
+* https://blog.csdn.net/NuoYan3327/article/details/101070512
 ## webpage
 [Web](https://shain120.github.io/wp/html/midterm/snake.html)
