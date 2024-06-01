@@ -26,6 +26,9 @@ function start(){
 const c = document.getElementById('game');
 const ctx = c.getContext('2d');
 
+const head = document.getElementById('s_head');
+const body = document.getElementById('s_body');
+const apple_color = document.getElementById('apple');
 
 class my_snake{
     constructor(x,y){
@@ -95,10 +98,10 @@ function play_again(event) {
 }
 
 function clear_screen() {
-    ctx.fillStyle= 'black';
+    ctx.fillStyle= '#181818';
     ctx.fillRect(0, 0, 400, 400);
 
-    ctx.strokeStyle = "gray";
+    ctx.strokeStyle = "#010101";
     ctx.strokeRect(0,0,40,40);
    
     for(let x = 0; x < 400; x+=40) {
@@ -149,12 +152,13 @@ function eat(){
 }
 
 function apple(){
-    ctx.fillStyle = "red";
+    
+    ctx.fillStyle = apple_color.value;
     ctx.fillRect(apple_x*pixel_count,apple_y*pixel_count,pixel_size,pixel_size);
 }
 
 function snake(){
-    ctx.fillStyle = "#BF00FF";
+    ctx.fillStyle = body.value;
     for(let i=0;i<snakePart.length;i++){
         let body = snakePart[i];
         ctx.fillRect(body.x*pixel_count,body.y*pixel_count,pixel_size,pixel_size);
@@ -164,7 +168,7 @@ function snake(){
     if(snakePart.length > s_len){
         snakePart.shift();
     }
-    ctx.fillStyle = "#4E2A84";
+    ctx.fillStyle = head.value;
     ctx.fillRect(s_x*pixel_count,s_y*pixel_count,pixel_size,pixel_size);
 }
 
