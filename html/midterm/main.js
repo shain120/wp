@@ -69,12 +69,9 @@ function is_over(){
     }//超出邊界
 
     for(let i=0;i<snakePart.length;i++){
-        if(s_x != snakePart[0].x && s_y != snakePart[0].y){
             if(s_x == snakePart[i].x && s_y == snakePart[i].y){
                 over = true;
             }
-        }
-
     }//碰到身體
 
     if(over){
@@ -161,8 +158,17 @@ function snake(){
     ctx.fillStyle = body.value;
     for(let i=0;i<snakePart.length;i++){
         let body = snakePart[i];
-        ctx.fillRect(body.x*pixel_count,body.y*pixel_count,pixel_size,pixel_size);
+        ctx.fillRect(0.5+body.x*pixel_count,0.5+body.y*pixel_count,pixel_size,pixel_size);
+
     }//draw body
+
+    for(let i=0;i<snakePart.length;i++){
+        let body = snakePart[i];
+        ctx.fillStyle = "white";
+
+        ctx.strokeRect(body.x*pixel_count, body.y*pixel_count, pixel_size, pixel_size);
+    }//draw body
+
 
     snakePart.push( new my_snake(s_x, s_y));
     if(snakePart.length > s_len){
