@@ -9,6 +9,7 @@ function start(){
     }
     //清屏
     clear_screen();
+
     //eat
     eat();
     //apple
@@ -17,11 +18,14 @@ function start(){
     snake();
     //score
     draw_score();
+
     //speed
     set_speed();
 
     timeout = setTimeout(start,1000/speed);
 }
+const spd = document.getElementById('speed');
+const level = document.getElementById('level');
 
 const c = document.getElementById('game');
 const ctx = c.getContext('2d');
@@ -37,7 +41,7 @@ class my_snake{
     }
 }//class
 
-let speed = 8;
+let speed = 4;
 
 let pixel_count = 40;   //每格移動大小
 let pixel_size = 40;    //每格大小
@@ -108,7 +112,33 @@ function clear_screen() {
     }
 
 }
-
+function add_speed(){
+    if(level.value == "1"){
+        if(score > 10 && score%4 == 0){
+            speed++;
+        }
+    }else if(score > 5 && level.value == "2"){
+        if(score%2 == 0){
+            speed++;
+        }
+    }else if(level.value == "3"){
+        if(score > 5 && score%2 == 0){
+            if(score >=15 && score %15 == 0){
+                speed+=2;
+            }else {
+                speed++;
+            }  
+        }
+    }else {
+        if(score > 5 && score%2 == 0){
+            if(score >=10 && score %10 == 0){
+                speed+=2;
+            }else {
+                speed+=2;
+            } 
+        }
+    }//變速
+}
 function eat(){
     if(apple_x == s_x && apple_y == s_y){
         apple_x = Math.floor(Math.random()*10);
@@ -117,18 +147,11 @@ function eat(){
         s_len++;
         score++;
 
-        if(score > 5 && score%2 == 0){
-            if(score != 0 && score >=15 && score %15 == 0){
-                speed+=3;
-            }else {
-                speed++;
-            }  
-        }//變速
+        add_speed();
     }//頭碰到蘋果
+
     for(let i=0;i<snakePart.length;i++){
         let body = snakePart[i];
-
-        
 
         if(apple_x == body.x && apple_y == body.y){
             apple_x = Math.floor(Math.random()*10);
@@ -137,15 +160,11 @@ function eat(){
             s_len++;
             score++;
 
-            if(score > 5 && score%2 == 0){
-                if(score != 0 && score >=15 &&score %15 == 0){
-                    speed+=5;
-                }else {
-                    speed++;
-                }  
-            }//變速
+            add_speed();
         }//身體碰到蘋果
     }
+    
+    spd.innerHTML = "speed:"+speed;
 }
 
 function apple(){
@@ -176,6 +195,7 @@ function snake(){
     }
     ctx.fillStyle = head.value;
     ctx.fillRect(s_x*pixel_count,s_y*pixel_count,pixel_size,pixel_size);
+
 }
 
 function draw_score() {
@@ -183,13 +203,20 @@ function draw_score() {
     ctx.font = "30px Poppins";
     ctx.fillText("Score: " + score, c.width-150, 30);
 }
-
-function set_speed() {
-    if(score == 5){
-        speed = 6;
-    }    
-
+function set_speed(){
+    level.addEventListener('change', function(e) {
+       if(e.target.value == "1"){
+            speed = 4;
+       }else if(e.target.value == "2"){
+            speed = 6;
+       }else if(e.target.value == "3"){
+            speed = 7;
+       }else{
+            speed = 10; 
+       }
+      })
 }
+
 
 document.body.addEventListener('keydown', keyDown);
 
