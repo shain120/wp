@@ -19,6 +19,7 @@ Esc 暫停 再按一下開始
 7. 更改顏色 (蛇 蘋果)
 8. 增加難度 運用addEventListener 來做難度的變更
 9. 禁用上下左右鍵去控制select
+10. 快速按兩個鍵可能導致遊戲結束以解決
 ## 參考資料
 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 * https://ithelp.ithome.com.tw/articles/10271522?sc=hot

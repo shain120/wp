@@ -7,6 +7,11 @@ function start(){
         document.body.addEventListener('keydown', play_again);
         return;
     }
+
+    if(window.localStorage.getItem('head') != null){
+        head.value = localStorage.getItem('head');
+    }
+    
     //清屏
     clear_screen();
 
@@ -34,6 +39,9 @@ const head = document.getElementById('s_head');
 const body = document.getElementById('s_body');
 const apple_color = document.getElementById('apple');
 
+
+
+
 class my_snake{
     constructor(x,y){
         this.x = x;
@@ -59,7 +67,8 @@ let cont_y = 0;
 
 let score = 0;
 let sle = 0;
-let bool_keycode = false;
+let bool_keycode_start = false; //判斷遊戲開始
+let bool_s_move = false;        //判斷蛇移動
 
 function snake_position(){
     s_x =s_x + cont_x;
@@ -94,6 +103,10 @@ function is_over(){
 
 function play_again(event) {
     if(event.keyCode == 32){
+      localStorage.setItem('head',head.value);
+      localStorage.setItem('body',body.value);
+      localStorag.setItem('apple_color',apple_color.value);
+
         location.reload();
     }
 }
@@ -196,6 +209,7 @@ function snake(){
     ctx.fillStyle = head.value;
     ctx.fillRect(s_x*pixel_count,s_y*pixel_count,pixel_size,pixel_size);
 
+    bool_s_move = true;
 }
 
 function draw_score() {
@@ -221,47 +235,57 @@ function set_speed(){
 document.body.addEventListener('keydown', keyDown);
 
 function keyDown(event) {
+    if(bool_s_move){
+        if(event.keyCode== 38 || event.keyCode== 87){
+            bool_keycode = true;
+            if(cont_y == 1 && s_len != 0){
+                return;
+            } //up
+            cont_y = -1;
+            cont_x = 0;
 
-    if(event.keyCode== 38 || event.keyCode== 87){
-        bool_keycode = true;
-        if(cont_y == 1 && s_len != 0){
-            return;
-        } //up
-        cont_y = -1;
-        cont_x = 0;
-    }
-    if(event.keyCode == 40 || event.keyCode == 83){
-        bool_keycode = true;
-        if(cont_y == -1 && s_len != 0){
-            return;
-        }//down
-        cont_y = 1;
-        cont_x = 0;
-    }
-    if(event.keyCode == 37 || event.keyCode== 65){
-        bool_keycode = true;
-        if(cont_x == 1 && s_len != 0){ 
-            return;
-        }//left
-        cont_y = 0;
-        cont_x = -1;
-    }
-    if(event.keyCode == 39 || event.keyCode== 68){
-        bool_keycode = true;
-        if(cont_x == -1 && s_len != 0){ 
-            return;
-        }//right
-        cont_y = 0;
-        cont_x = 1;
-    }
-    if(event.keyCode == 27 && bool_keycode == true){
-        if(sle == 0){
-            clearTimeout(timeout);
-            sle++;
-        }else{
-            start();
-            sle = 0;
+            bool_s_move = false;
         }
+        if(event.keyCode == 40 || event.keyCode == 83){
+            bool_keycode = true;
+            if(cont_y == -1 && s_len != 0){
+                return;
+            }//down
+            cont_y = 1;
+            cont_x = 0;
+            
+            bool_s_move = false;
+        }
+        if(event.keyCode == 37 || event.keyCode== 65){
+            bool_keycode = true;
+            if(cont_x == 1 && s_len != 0){ 
+                return;
+            }//left
+            cont_y = 0;
+            cont_x = -1;
+            
+            bool_s_move = false;
+        }
+        if(event.keyCode == 39 || event.keyCode== 68){
+            bool_keycode = true;
+            if(cont_x == -1 && s_len != 0){ 
+                return;
+            }//right
+            cont_y = 0;
+            cont_x = 1;
+            
+            bool_s_move = false;
+        }
+        if(event.keyCode == 27 && bool_keycode == true){
+            if(sle == 0){
+                clearTimeout(timeout);
+                sle++;
+            }else{
+                start();
+                sle = 0;
+            }
+        }
+
     }
 }
 
