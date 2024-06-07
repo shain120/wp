@@ -20,6 +20,7 @@ Esc 暫停 再按一下開始
 8. 增加難度 運用addEventListener 來做難度的變更
 9. 禁用上下左右鍵去控制select
 10. 快速按兩個鍵可能導致遊戲結束以解決
+11. 新增sessionstorage 讓顏色,速度,難度得以維持
 ## 參考資料
 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 * https://ithelp.ithome.com.tw/articles/10271522?sc=hot
