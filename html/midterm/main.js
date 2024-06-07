@@ -4,6 +4,12 @@ function start(){
     //是否結束
     let lose = is_over();
     if(lose){
+        sessionStorage.setItem("head_col", head.value);
+        sessionStorage.setItem("body_col", body.value);
+        sessionStorage.setItem("apple_col", apple_color.value);
+        sessionStorage.setItem("level_list", level.value);
+
+
         document.body.addEventListener('keydown', play_again);
         return;
     }
@@ -33,6 +39,9 @@ const head = document.getElementById('s_head');
 const body = document.getElementById('s_body');
 const apple_color = document.getElementById('apple');
 
+
+
+
 class my_snake{
     constructor(x,y){
         this.x = x;
@@ -60,6 +69,15 @@ let score = 0;
 let sle = 0;
 let bool_keycode_start = false; //判斷遊戲開始
 let bool_s_move = false;        //判斷蛇移動
+
+if(sessionStorage.getItem("head_col")){
+    head.value = sessionStorage.getItem("head_col");
+    body.value = sessionStorage.getItem("body_col");
+    apple_color.value = sessionStorage.getItem("apple_col");
+    level.value = sessionStorage.getItem("level_list");
+    
+    speed = parseInt(level.value, 10);
+}
 
 function snake_position(){
     s_x =s_x + cont_x;
@@ -94,6 +112,9 @@ function is_over(){
 
 function play_again(event) {
     if(event.keyCode == 32){
+
+
+
         location.reload();
     }
 }
@@ -204,11 +225,11 @@ function draw_score() {
 }
 function set_speed(){
     level.addEventListener('change', function(e) {
-       if(e.target.value == "1"){
+       if(e.target.value == "4"){
             speed = 4;
-       }else if(e.target.value == "2"){
+       }else if(e.target.value == "6"){
             speed = 6;
-       }else if(e.target.value == "3"){
+       }else if(e.target.value == "7"){
             speed = 7;
        }else{
             speed = 10; 
