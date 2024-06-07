@@ -4,6 +4,7 @@ function start(){
     //是否結束
     let lose = is_over();
     if(lose){
+        //設定暫存
         sessionStorage.setItem("head_col", head.value);
         sessionStorage.setItem("body_col", body.value);
         sessionStorage.setItem("apple_col", apple_color.value);
@@ -38,9 +39,6 @@ const ctx = c.getContext('2d');
 const head = document.getElementById('s_head');
 const body = document.getElementById('s_body');
 const apple_color = document.getElementById('apple');
-
-
-
 
 class my_snake{
     constructor(x,y){
@@ -77,7 +75,7 @@ if(sessionStorage.getItem("head_col")){
     level.value = sessionStorage.getItem("level_list");
     
     speed = parseInt(level.value, 10);
-}
+}//讀入暫存
 
 function snake_position(){
     s_x =s_x + cont_x;
