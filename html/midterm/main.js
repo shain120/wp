@@ -102,8 +102,7 @@ function clear_screen() {
     ctx.fillStyle= '#181818';
     ctx.fillRect(0, 0, 400, 400);
 
-
-   
+    ctx.strokeStyle = "#010101";
     for(let x = 0; x < 400; x+=40) {
         for(let y = 0; y < 400; y+=40) {
             ctx.strokeRect(x-0.5, y-0.5, 40, 40);  // 繪製矩形
