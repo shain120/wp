@@ -146,7 +146,7 @@ function add_speed(){
                 speed++;
             }  
         }
-    }else {
+    }else if(level.value == "10") {
         if(score > 5 && score%2 == 0){
             if(score >=10 && score %10 == 0){
                 speed+=2;
