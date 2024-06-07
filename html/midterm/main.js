@@ -7,14 +7,8 @@ function start(){
         document.body.addEventListener('keydown', play_again);
         return;
     }
-
-    if(window.localStorage.getItem('head') != null){
-        head.value = localStorage.getItem('head');
-    }
-    
     //清屏
     clear_screen();
-
     //eat
     eat();
     //apple
@@ -38,9 +32,6 @@ const ctx = c.getContext('2d');
 const head = document.getElementById('s_head');
 const body = document.getElementById('s_body');
 const apple_color = document.getElementById('apple');
-
-
-
 
 class my_snake{
     constructor(x,y){
@@ -103,10 +94,6 @@ function is_over(){
 
 function play_again(event) {
     if(event.keyCode == 32){
-      localStorage.setItem('head',head.value);
-      localStorage.setItem('body',body.value);
-      localStorag.setItem('apple_color',apple_color.value);
-
         location.reload();
     }
 }
@@ -115,8 +102,7 @@ function clear_screen() {
     ctx.fillStyle= '#181818';
     ctx.fillRect(0, 0, 400, 400);
 
-    ctx.strokeStyle = "#010101";
-    ctx.strokeRect(0,0,40,40);
+
    
     for(let x = 0; x < 400; x+=40) {
         for(let y = 0; y < 400; y+=40) {
