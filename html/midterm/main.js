@@ -130,15 +130,15 @@ function clear_screen() {
 
 }
 function add_speed(){
-    if(level.value == "1"){
+    if(level.value == "4"){
         if(score > 10 && score%4 == 0){
             speed++;
         }
-    }else if(score > 5 && level.value == "2"){
+    }else if(score > 5 && level.value == "6"){
         if(score%2 == 0){
             speed++;
         }
-    }else if(level.value == "3"){
+    }else if(level.value == "7"){
         if(score > 5 && score%2 == 0){
             if(score >=15 && score %15 == 0){
                 speed+=2;
